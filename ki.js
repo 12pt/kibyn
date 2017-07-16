@@ -20,7 +20,7 @@ var kibyn = (function() {
                 case "C": kb.ctrlKey  = true; break;
                 case "S": kb.superKey = true; break;
                 case "M": kb.metaKey  = true; break;
-                default: kb.key       = character; // keep replacing until we get to the last valid character
+                default: kb.key       = character[0]; // last valid string that isn't ACSM, so just take the first char.
             }
         });
         return kb;
