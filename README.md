@@ -14,7 +14,11 @@ There are 4 reserved letters for parsing the keybinding string:
 * A => alt
 
 Anything else (alphanumerical) passed to `ki.create()` will be interpreted as a non-modifier key, but
-only the last non-modifier will be used in the keybinding.
+only the first non-modifier will be used in the keybinding.
+
+Keys are separated by *any* non-alphanumerical character, so C-M-s makes Ctrl-Meta-s, but CMs makes C. For the sake
+of future sanity, I'd recommend only using `-`'s to separate characters, as when non-alphanumericals are supported
+this will be the only way of separating them.
 
 For example:
 
