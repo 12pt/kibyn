@@ -17,8 +17,6 @@ var kibyn = (function() {
             key:      ""
         };
 
-        var lastValidHyphen = keybind.length - 1;
-
         function useUnlessSep(character, index) {
             if(character == THE_SEPARATOR) {
                 if(index % 2 == 0) {

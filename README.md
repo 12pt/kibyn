@@ -40,3 +40,4 @@ myThing.addEventListener("keydown", function(event) {
 ## TODO
 
 * Actual tests might be a plan :thumbs_up:
+* Function to convert a keybind object to a string (_maybe_, only if I find a good reason)
