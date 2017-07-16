@@ -32,4 +32,5 @@ myThing.addEventListener("keydown", function(event) {
 
 ## TODO
 
-Support more than just alphanumerical keys being pressed. 
+* Support more than just alphanumerical keys being pressed. 
+* Actual tests might be a plan :thumbs_up:
