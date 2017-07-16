@@ -25,7 +25,7 @@ var copyKb = kibyn.create("C-c"); // Ctrl-C
 
 myThing.addEventListener("keydown", function(event) {
     if(kibyn.matches(event, copyKb) {
-        myThing.copyText;
+        // code to copy something
     }
 });
 ```
