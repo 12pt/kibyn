@@ -1,4 +1,7 @@
 var kibyn = (function() {
+    /** What to use to separate keys in a keybinding string */
+    var THE_SEPARATOR = "-";
+
     /**
      * Parse an emacs-like keybind string e.g. C-M-g and convert
      * it to an object more easily checked. Doesn't care about shift.
@@ -13,14 +16,26 @@ var kibyn = (function() {
             metaKey:  false,
             key:      ""
         };
-        // support e.g. C-M-t, CMt, "C M t", etc... only thing that matters is case.
-        keybind.match(/[a-zA-Z0-9]+/g).forEach(character => {
+
+        var lastValidHyphen = keybind.length - 1;
+
+        function useUnlessSep(character, index) {
+            if(character == THE_SEPARATOR) {
+                if(index % 2 == 0) {
+                    kb.key = character;
+                }
+            } else {
+                kb.key = character;
+            }
+        }
+
+        keybind.split("").forEach((character, index) => {
             switch(character) {
                 case "A": kb.altKey   = true; break;
                 case "C": kb.ctrlKey  = true; break;
                 case "S": kb.superKey = true; break;
                 case "M": kb.metaKey  = true; break;
-                default: kb.key       = character[0]; // last valid string that isn't ACSM, so just take the first char.
+            default: useUnlessSep(character, index);
             }
         });
         return kb;

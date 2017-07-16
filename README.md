@@ -13,16 +13,19 @@ There are 4 reserved letters for parsing the keybinding string:
 * C => ctrl
 * A => alt
 
-Anything else (alphanumerical) passed to `ki.create()` will be interpreted as a non-modifier key, but
-only the first non-modifier will be used in the keybinding.
+There's one weird pseudo-reserved character which is `-`. If it's used between letters, it is ignored and used as a separator.
+If it's at a place one would not use a separator e.g. the end of a keybind, it is used as a non-modifier key.
 
-Keys are separated by *any* non-alphanumerical character, so C-M-s makes Ctrl-Meta-s, but CMs makes C. For the sake
-of future sanity, I'd recommend only using `-`'s to separate characters, as when non-alphanumericals are supported
-this will be the only way of separating them.
+For example, ctrl + hyphen would be:
 
-For example:
+```javascript
+kibyn.create("C--");
+```
 
-`C-M-what` will produce a keybinding representing Ctrl, Meta, and t.
+Only one non-modifier key is supported. Supplying more than one will result in the final non-modifier being picked. For example,
+`C-A-ntelope" would resolve to the equivalent object to `C-A-e`.
+
+### Common Use-case
 
 ```javascript
 var copyKb = kibyn.create("C-c"); // Ctrl-C
@@ -36,5 +39,4 @@ myThing.addEventListener("keydown", function(event) {
 
 ## TODO
 
-* Support more than just alphanumerical keys being pressed. 
 * Actual tests might be a plan :thumbs_up:
