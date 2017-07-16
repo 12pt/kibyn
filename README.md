@@ -23,7 +23,7 @@ kibyn.create("C--");
 ```
 
 Only one non-modifier key is supported. Supplying more than one will result in the final non-modifier being picked. For example,
-`C-A-ntelope" would resolve to the equivalent object to `C-A-e`.
+`C-A-ntelope` would resolve to the equivalent object to `C-A-e`.
 
 ### Common Use-case
 
